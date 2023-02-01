@@ -1,0 +1,16 @@
+
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.text {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 16px;
+}
+
+body{
+  background-image: repeating-linear-gradient(45deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
+}
