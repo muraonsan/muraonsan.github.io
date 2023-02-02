@@ -73,7 +73,7 @@ body{
   display: flex; /* flexコンテナを使用 */
   justify-content: center; /* flexアイテムを中央配置 */
 }
-/*円形アイコンを横中央に class 汎用可能*/
+/*円形アイコンを横中央に class 汎用不能*/
 .circle {
   width: 200px;
   height: 200px;
@@ -88,4 +88,20 @@ body{
 /*右寄りテキスト*/
 .right {
   float: right;
+}
+/*ボタンにカーソルを持って行ったときのリンク色*/
+.linkcolorchange:hover {
+  color: rgb(9, 255, 0);
+}
+/*rumty アイコン円*/
+.circleRumty {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(Rumtyicon.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
 }
