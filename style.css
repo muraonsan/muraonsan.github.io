@@ -111,3 +111,8 @@ footer {
   background-color: lightgray;
   padding: 20px;
 }
+/*image 中央配置*/
+img {
+  display: block;
+  margin: 0 auto;
+}
