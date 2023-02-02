@@ -105,3 +105,9 @@ body{
   margin: 0 auto;
   text-align: center;
 }
+/*フッター*/
+footer {
+  text-align: center;
+  background-color: lightgray;
+  padding: 20px;
+}
