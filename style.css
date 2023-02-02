@@ -118,6 +118,18 @@ body{
   margin: 0 auto;
   text-align: center;
 }
+/*rumu icon class ver2*/
+.circleRumty2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(Rumtyicon2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
 /*フッター*/
 footer {
   text-align: center;
