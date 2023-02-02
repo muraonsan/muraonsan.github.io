@@ -78,10 +78,14 @@ body{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: url(logo.png);
+  background-image: url(muraoicon.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
   text-align: center;
+}
+/*右寄りテキスト*/
+.right {
+  float: right;
 }
