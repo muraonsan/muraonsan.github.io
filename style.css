@@ -68,6 +68,19 @@ body{
   margin: 4px 2px; /* 上下左右のマージン */
   cursor: pointer; /* マウスポインタを手形に */
 }
+
+.button-MAT {
+  background-color: #f083e7; /* 背景色 */
+  border: none; /* 枠線なし */
+  color: white; /* 文字色 */
+  padding: 15px 32px; /* 上下左右の余白 */
+  text-align: center; /* 文字を中央寄せ */
+  text-decoration: none; /* 下線なし */
+  display: inline-block; /* ボタンをインラインブロックで配置 */
+  font-size: 16px; /* 文字のサイズ */
+  margin: 4px 2px; /* 上下左右のマージン */
+  cursor: pointer; /* マウスポインタを手形に */
+}
 /*ボタンの中央配置クラス*/
 .container {
   display: flex; /* flexコンテナを使用 */
