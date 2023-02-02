@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>muraon Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(140, 233, 233);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 10px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: black;
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h1 style="font-size: 20px; color: blue;">MEGAMI AIR TRANSPORT</h1>
+      <ul>
+        <li><a href="https://muraonsan.github.io/">TOPに戻る</a></li>
+      </ul>
+      <div class="right">
+        <img src="logo.png" alt="Logo">
+        <p style="color: rgb(3, 97, 35);">A MEMBER OF Paradox Chat</p>
+      </div>
+    </nav>
+    <div class="right">
+      <p><a href="https://muraonsan.github.io/loginpage">Login Page</a></p>
+    </div>
+    <div style="text-align:center;">
+      <p style="font-size: 40px;" class="text">LOGIN PAGE</p>
+
+      <p style="font-size: 30px;" class="text">継続するにはログインしてください</p>
+      <h1 style="color: red">運用停止中</h1>
+    </div>
+    <form action="login.php" method="post">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      
+  </body>
+</html>
