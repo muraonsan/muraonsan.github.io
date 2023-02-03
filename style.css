@@ -141,3 +141,99 @@ img {
   display: block;
   margin: 0 auto;
 }
+/*歴代アイコンページ １から8まで*/
+.Rekidai-icon1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon3 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-3.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon4 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-4.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon5 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-5.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon6 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-6.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon7 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-7.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Rekidai-icon8 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(icons/muraoicon-8.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
