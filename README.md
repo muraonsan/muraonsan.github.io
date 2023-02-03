@@ -1,1 +1,3 @@
-# muraonsan.github.io
+# muraonsan.gith
+
+Paradox Chat Developers メンバー以外使用禁止
