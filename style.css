@@ -1,0 +1,129 @@
+
+
+.text-container { /*テキスト中央*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+/*bodyの背景グラデーション*/
+body{
+  background-image: repeating-linear-gradient(45deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
+}
+/*ボタンの基本装飾*/
+.button-Discord {
+  background-color: #5865F2; /* 背景色 */
+  border: none; /* 枠線なし */
+  color: white; /* 文字色 */
+  padding: 15px 32px; /* 上下左右の余白 */
+  text-align: center; /* 文字を中央寄せ */
+  text-decoration: none; /* 下線なし */
+  display: inline-block; /* ボタンをインラインブロックで配置 */
+  font-size: 16px; /* 文字のサイズ */
+  margin: 4px 2px; /* 上下左右のマージン */
+  cursor: pointer; /* マウスポインタを手形に */
+}
+
+.button-Twitter {
+  background-color: #00acee; /* 背景色 */
+  border: none; /* 枠線なし */
+  color: white; /* 文字色 */
+  padding: 15px 32px; /* 上下左右の余白 */
+  text-align: center; /* 文字を中央寄せ */
+  text-decoration: none; /* 下線なし */
+  display: inline-block; /* ボタンをインラインブロックで配置 */
+  font-size: 16px; /* 文字のサイズ */
+  margin: 4px 2px; /* 上下左右のマージン */
+  cursor: pointer; /* マウスポインタを手形に */
+}
+
+.button-GitHub {
+  background-color: #000000; /* 背景色 */
+  border: none; /* 枠線なし */
+  color: white; /* 文字色 */
+  padding: 15px 32px; /* 上下左右の余白 */
+  text-align: center; /* 文字を中央寄せ */
+  text-decoration: none; /* 下線なし */
+  display: inline-block; /* ボタンをインラインブロックで配置 */
+  font-size: 16px; /* 文字のサイズ */
+  margin: 4px 2px; /* 上下左右のマージン */
+  cursor: pointer; /* マウスポインタを手形に */
+}
+
+.button-Reddit {
+  background-color: #ff5e00; /* 背景色 */
+  border: none; /* 枠線なし */
+  color: white; /* 文字色 */
+  padding: 15px 32px; /* 上下左右の余白 */
+  text-align: center; /* 文字を中央寄せ */
+  text-decoration: none; /* 下線なし */
+  display: inline-block; /* ボタンをインラインブロックで配置 */
+  font-size: 16px; /* 文字のサイズ */
+  margin: 4px 2px; /* 上下左右のマージン */
+  cursor: pointer; /* マウスポインタを手形に */
+}
+
+/*ボタンの中央配置クラス*/
+.container {
+  display: flex; /* flexコンテナを使用 */
+  justify-content: center; /* flexアイテムを中央配置 */
+}
+/*murao iconを円形アイコンを横中央に class 汎用不能*/
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(muraoicon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+/*右寄りテキスト*/
+.right {
+  float: right;
+}
+/*ボタンにカーソルを持って行ったときのリンク色*/
+.linkcolorchange:hover {
+  color: rgb(9, 255, 0);
+}
+/*rumty アイコン円*/
+.circleRumty {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(Rumtyicon.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+/*rumu icon class ver2*/
+.circleRumty2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: url(Rumtyicon2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+}
+/*フッター*/
+footer {
+  text-align: center;
+  background-color: lightgray;
+  padding: 20px;
+}
+/*image 中央配置*/
+img {
+  display: block;
+  margin: 0 auto;
+}
+/*メニューバーのフォントサイズ指定*/
+.menu {
+  font-size: 18px; /* フォントサイズを16pxに設定、各ページに適用 */
+}

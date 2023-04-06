@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Post | Github Pages Rewrite</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script>
+
+  /*
+   * Config
+   */
+  var file_name = 'post.html';
+  var parameter_key = 'post_id';
+
+
+  /*
+   * Env
+   */
+   var path_name = window.location.pathname;
+   var query_string = window.location.search;
+   var base_dir = path_name.split(file_name)[0];
+
+
+  /*
+   * Process
+   * (Rewrite URL using historyAPI)
+   */
+  var match_condition = new RegExp(parameter_key + '=[a-z0-9-_]+$');
+  if (parameter = query_string.match(match_condition))
+  {
+    parameter_value = parameter[0].split('=')[1];
+    history.replaceState(null, null, base_dir + file_name.replace('.html', '/') + parameter_value);
+    document.title = parameter_value + ' | Github Pages Rewrite';
+  }
+
+</script>
+</head>
+<body>
+  <h1>Github Pages Rewrite</h1>
+  <h2><script>document.write(parameter_value);</script></h2>
+  <nav>
+    <ul>
+      <li><a href="/ghp-rewrite">TOP</a></li>
+  		<li><a href="/ghp-rewrite/about">About</a></li>
+  		<li><a href="/ghp-rewrite/contact">Contact</a></li>
+  	</ul>
+  </nav>
+	<ol>
+    <li class="linked"><a href="/ghp-rewrite">Top</a><li>
+    <li><script>document.write(parameter_value);</script></li>
+  </ol>
+  <h3>パーマリンク</h3>
+  <p>HistoryAPI の replaceState を利用してパーマリンクを生成しています。<br>
+    /post.html?post_id=<script>document.write(parameter_value);</script> → /post/<script>document.write(parameter_value);</script>
+  </p>
+  <h3>エントリー</h3>
+  <p>パーマリンクによる遷移</p>
+	<ul>
+		<li><a href="/ghp-rewrite/post/hello-world">Hello, World!</a></li>
+		<li><a href="/ghp-rewrite/post/you-can-rewrite">You can rewrite!</a></li>
+		<li><a href="/ghp-rewrite/post/23">23</a></li>
+	</ul>
+</body>
+</html>
