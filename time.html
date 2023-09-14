@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: hsla(0, 90%, 12%, 0.842);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 18px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+.class {
+cursor: pointer;
+border: 1px solid #ccc;
+padding: 10px;
+margin: 5px;
+}
+.notes {
+display: none;
+padding: 10px;
+border: 1px solid #ddd;
+background-color: #f9f9f9;
+}
+</style>
+<script>
+function toggleNotes(classId) {
+var notes = document.getElementById('notes-' + classId);
+notes.style.display = notes.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+</head>
+<body>
+    <nav>
+        <h1 style="font-size: 25px; font-family: Alkatra; color: rgb(255, 0, 0);">MURAON WEB CLOUD</h1>
+        <ul class="menu">
+          <li><a href="https://muraonsan.github.io/">Home</a></li>
+          <li><a href="https://muraonsan.github.io/about.html">About</a></li>
+          <li><a href="https://muraonsan.github.io/contact.html">Contact</a></li>
+          <li><a href="https://muraonsan.github.io/other.html">Other</a></li>
+        </ul>
+      </nav>
+<div class="class" onclick="toggleNotes('esports')">e-スポーツ同好会</div>
+<div class="notes" id="notes-esports">
+<p>Note-ID:esports</p>
+</div>
+<div class="class" onclick="toggleNotes('classroom')">2組</div>
+<div class="notes" id="notes-classroom">
+<p>Note-ID:classroom</p>
+</div>
+<!-- 他の授業も同様に追加 -->
+</body>
+</html>
