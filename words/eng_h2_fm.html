@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="ja">
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -63,51 +64,27 @@
 
     <div id="question"></div>
     <div id="answer" style="display: none;"></div>
-    <button id="showAnswerButton" onclick="showAnswer()">答えを表示</button>
+    <button id="showAnswerButton" onclick="showAnswer()">解答を表示</button>
     <button id="nextQuestionButton" onclick="showRandomQuestion()">次の問題</button>
 
     <script>
-        let wordData = [];
+        const wordData = [
+            { question: "問題1", answer: "答え1" },
+            { question: "問題2", answer: "答え2" },
+            { question: "問題3", answer: "答え3" },
+            // 他の問題と答えを追加
+        ];
+
         let currentIndex = -1;
 
-        // ファイルを読み込む関数
-        async function loadWordData() {
-            try {
-                const response = await fetch('words/word_data.txt'); // ファイル名を指定
-                if (!response.ok) {
-                    throw new Error('ファイルの読み込みに失敗しました。');
-                }
-                const text = await response.text();
-                wordData = text.split('\n').map(line => {
-                    const [question, answer] = line.split(':');
-                    return { question: question.trim(), answer: answer.trim() };
-                });
-                showRandomQuestion();
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
         function showRandomQuestion() {
-            if (wordData.length === 0) {
-                alert('単語データが読み込まれていません。');
-                return;
-            }
-
             // ランダムな問題を選択
             const randomIndex = getRandomIndex();
-            if (randomIndex === currentIndex) {
-                // 同じ問題が連続して表示されないようにする
-                showRandomQuestion();
-                return;
-            }
-
-            // 問題を表示
+            currentIndex = randomIndex;
             const questionElement = document.getElementById("question");
             const answerElement = document.getElementById("answer");
             questionElement.textContent = wordData[randomIndex].question;
             answerElement.style.display = "none"; // 答えを非表示にする
-            currentIndex = randomIndex;
         }
 
         function showAnswer() {
@@ -121,8 +98,8 @@
             return Math.floor(Math.random() * wordData.length);
         }
 
-        // ページが読み込まれたときにファイルを読み込む
-        window.addEventListener('load', loadWordData);
+        // 最初の問題をランダムに表示
+        showRandomQuestion();
     </script>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
