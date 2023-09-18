@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>muraon Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="murao.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Yomogi&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--搭載フォントはAlkatraとYomogi、代替フォントはsans-serif-->
+
+    <style>
+      /* Style for the menu bar */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(180, 120, 230, 0.842);
+        padding: 10px;
+      }
+
+      /* Style for the menu items */
+      nav ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 0 18px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+      }
+
+      /* Style for the image and text */
+      nav .right {
+        display: flex;
+        align-items: center;
+      }
+
+      nav .right img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h1 style="font-size: 25px; font-family: Alkatra; color: rgb(255, 255, 255);">MURAON WEB WORDS</h1>
+      <ul class="menu">
+        <li><a href="https://muraonsan.github.io/">Go back to Home page</a></li>
+      </ul>
+    </nav>
+
+    <div id="question"></div>
+    <div id="answer" style="display: none;"></div>
+    <button id="showAnswerButton" onclick="showAnswer()">答えを表示</button>
+    <button id="nextQuestionButton" onclick="showRandomQuestion()">次の問題</button>
+
+    <script>
+        let wordData = [];
+        let currentIndex = -1;
+
+        // ファイルを読み込む関数
+        async function loadWordData() {
+            try {
+                const response = await fetch('words/word_data.txt'); // ファイル名を指定
+                if (!response.ok) {
+                    throw new Error('ファイルの読み込みに失敗しました。');
+                }
+                const text = await response.text();
+                wordData = text.split('\n').map(line => {
+                    const [question, answer] = line.split(':');
+                    return { question: question.trim(), answer: answer.trim() };
+                });
+                showRandomQuestion();
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function showRandomQuestion() {
+            if (wordData.length === 0) {
+                alert('単語データが読み込まれていません。');
+                return;
+            }
+
+            // ランダムな問題を選択
+            const randomIndex = getRandomIndex();
+            if (randomIndex === currentIndex) {
+                // 同じ問題が連続して表示されないようにする
+                showRandomQuestion();
+                return;
+            }
+
+            // 問題を表示
+            const questionElement = document.getElementById("question");
+            const answerElement = document.getElementById("answer");
+            questionElement.textContent = wordData[randomIndex].question;
+            answerElement.style.display = "none"; // 答えを非表示にする
+            currentIndex = randomIndex;
+        }
+
+        function showAnswer() {
+            // 答えを表示
+            const answerElement = document.getElementById("answer");
+            answerElement.textContent = wordData[currentIndex].answer;
+            answerElement.style.display = "block"; // 答えを表示する
+        }
+
+        function getRandomIndex() {
+            return Math.floor(Math.random() * wordData.length);
+        }
+
+        // ページが読み込まれたときにファイルを読み込む
+        window.addEventListener('load', loadWordData);
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <footer>
+      <p>&copy; 2023  muraon</p>
+    </footer>
+
+  </body>
+</html>
