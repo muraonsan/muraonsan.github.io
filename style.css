@@ -114,6 +114,12 @@ body{
 .linkcolorchange:hover {
   color: rgb(9, 255, 0);
 }
+
+/*リンク色変化 メニューバー用*/
+.linkcolorchange2:hover {
+  color: rgb(0, 47, 255);
+}
+
 /*rumty アイコン円*/
 .circleRumty {
   width: 200px;
