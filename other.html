@@ -55,7 +55,7 @@
   </head>
   <body>
     <nav>
-      <h1 style="font-size: 25px; font-family: Alkatra; color: rgb(255, 255, 255);">MURAON WEB</h1>
+      <img id="backButton" src="logo2.png" alt="Back" onclick="goToIndex()">
       <ul class="menu">
         <li><a href="https://muraonsan.github.io/">Home</a></li>
         <li><a href="https://muraonsan.github.io/about.html">About</a></li>
@@ -63,6 +63,11 @@
         <li><a href="https://muraonsan.github.io/other.html">Other</a></li>
       </ul>
     </nav>
+    <script>
+      function goToIndex() {
+        window.location.href = "index.html";
+      }
+    </script>
     <div style="text-align:center;">
       <p style="font-size: 30px; font-family: Alkatra;" class="text">Multi-purpose Page</p>
       <p style="font-size: 20px; font-family: Alkatra;" class="text">多用途目的の雑多なページです。</p>

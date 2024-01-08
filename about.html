@@ -55,28 +55,35 @@
   </head>
   <body>
     <nav>
-      <h1 style="font-size: 25px; font-family: Alkatra; color: rgb(255, 255, 255);">MURAON WEB</h1>
-      <ul class="menu">
+      <img id="backButton" src="logo2.png" alt="Back" onclick="goToIndex()">
+      <ul class="menu linkcolorchange2">
         <li><a href="https://muraonsan.github.io/">Home</a></li>
         <li><a href="https://muraonsan.github.io/about.html">About</a></li>
         <li><a href="https://muraonsan.github.io/contact.html">Contact</a></li>
         <li><a href="https://muraonsan.github.io/other.html">Other</a></li>
       </ul>
     </nav>
+
+    <script>
+      function goToIndex() {
+        window.location.href = "index.html";
+      }
+    </script>
+    
     <div style="text-align:center;">
       <p style="font-size: 30px; font-family: Alkatra;" class="text">ABOUT ME!</p>
       <p style="font-size: 40px; font-family: Yomogi;" class="text">I'm muraon</p>
     </div>
     
     <div class="circle">
-      <img sec="kyuru-mura.png" alt="">
+      <img sec="kyuru-mura.png" alt="これが私だ">
     </div>
     <br><br><br>
     <div style="text-align:center;">
       <p style="font-size: 23px; font-family: Yomogi;" class="text">ただ生きてます。時折RumtyのDiscord鯖にいます</p>
       <p style="font-size: 18px; font-family: Yomogi" class="text">つまりどういうことかというとただの暇人ですね可哀想</p>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
     <footer>
       <p>&copy; 2023  muraon</p>
     </footer>

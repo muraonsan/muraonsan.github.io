@@ -159,3 +159,9 @@ img {
 .menu {
   font-size: 18px; /* フォントサイズを16pxに設定、各ページに適用 */
 }
+
+/*NAVの左上ロゴ*/
+#backButton {
+      cursor: pointer;
+      margin-left: 10px;
+    }
