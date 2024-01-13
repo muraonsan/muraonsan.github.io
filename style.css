@@ -158,10 +158,12 @@ body{
   text-align: center;
 }
 /*フッター*/
-footer {
+.footer {
+  background-color: #333;
+  color: #fff;
   text-align: center;
-  background-color: lightgray;
-  padding: 20px;
+  padding: 10px;
+  width: 100%;
 }
 /*image 中央配置*/
 img {
