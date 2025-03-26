@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/moji.css">
+    <script src="js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            MURAON WEB
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <main>
+
+        <div class="moji-senta pattaya-regular">
+        <p style="color:rgb(139, 177, 235); font-size: 45px;">WELCOME TO MY SITE!</p>
+        </div>
+        <div class="moji-senta">
+            <p>このサイトは むらおん のwebサイトです</p>
+            <p>Twitterは<a href=https://x.com/Gerda_me_wo>こちら</a></p>
+            <p>Discordは<a href=https://discord.com/users/569826613827469326>こちら</a></p>
+        </div>
+        
+
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+    <!--しーくれっと-->
+    <script>
+        // 秘密の順番を設定
+        const secretSequence = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'];
+        let currentSequenceIndex = 0;
+    
+        document.addEventListener('keydown', (event) => {
+          // 入力されたキーが次の順番に合っているか確認
+          if (event.key === secretSequence[currentSequenceIndex]) {
+            currentSequenceIndex++; // 次の順番に進む
+    
+            // 全てのキーが入力された場合
+            if (currentSequenceIndex === secretSequence.length) {
+              alert('秘密基地へようこそ！'); // メッセージを表示
+              window.location.href = 'https://muraonsan.github.io/main.html'; // 遷移先URLを指定
+            }
+          } else {
+            // 順番が違った場合、最初に戻す
+            currentSequenceIndex = 0;
+          }
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/doainfo.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <main>
+        <h1 style="color: rgb(59, 187, 59);">◇&nbsp;&nbsp;重要操作メニュー&nbsp;&nbsp;◇</h1>
+  
+        <div>
+          <button class="option-button" data-action="operation1">乗降案内 (長)</button>
+          <button class="option-button" data-action="operation2">乗降案内 (短)</button>
+          <button class="option-button" data-action="operation3">発車案内</button>
+        </div>
+        
+        <button id="confirm-button">設定</button>
+      
+        <script src="js/tims1.js"></script>
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+</body>
+</html>

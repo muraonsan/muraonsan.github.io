@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURAON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/time.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <main>
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+<div id="senta">
+<h1>タイマー</h1>
+<div class="button-container">
+    <button class="preset" onclick="setTimer(1 * 60)">1分</button>
+    <button class="preset" onclick="setTimer(5 * 60)">5分</button>
+    <button class="preset" onclick="setTimer(10 * 60)">10分</button>
+    <button class="preset" onclick="setTimer(20 * 60)">20分</button>
+</div>
+
+<div>
+    <input type="number" id="customMinutes" placeholder="分" min="0" style="width:80px;"> 
+    <input type="number" id="customSeconds" placeholder="秒" min="0" max="59" style="width:80px;"> 
+    <button onclick="setCustomTimer()">設定</button>
+</div>
+
+<div id="timerDisplay">00:00</div>
+
+<div class="control-container">
+    <button class="control" onclick="startTimer()">スタート</button>
+    <button class="control" onclick="stopTimer()">ストップ</button>
+    <button class="control" onclick="resetTimer()">リセット</button>
+</div>
+
+<button id="endConfirm" onclick="confirmEnd()">終了確認</button>
+
+<audio id="endAudio" src="music/matinamiharuka.mp3"></audio>
+</div>
+
+<script>
+    let countdown;
+    let remainingTime = 0;
+    let audio = document.getElementById('endAudio');
+
+    function setTimer(seconds) {
+        remainingTime = seconds;
+        updateDisplay();
+    }
+
+    function setCustomTimer() {
+        const customMinutes = parseInt(document.getElementById('customMinutes').value) || 0;
+        const customSeconds = parseInt(document.getElementById('customSeconds').value) || 0;
+        remainingTime = (customMinutes * 60) + customSeconds;
+        updateDisplay();
+    }
+
+    function startTimer() {
+        if (countdown) return; 
+        countdown = setInterval(() => {
+            if (remainingTime > 0) {
+                remainingTime--;
+                updateDisplay();
+            } else {
+                clearInterval(countdown);
+                countdown = null;
+                audio.play();
+                document.getElementById('endConfirm').style.display = 'block';
+            }
+        }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(countdown);
+        countdown = null;
+    }
+
+    function resetTimer() {
+        stopTimer();
+        remainingTime = 0;
+        updateDisplay();
+        audio.pause();
+        audio.currentTime = 0;
+        document.getElementById('endConfirm').style.display = 'none';
+    }
+
+    function confirmEnd() {
+        resetTimer();
+    }
+
+    function updateDisplay() {
+        const minutes = String(Math.floor(remainingTime / 60)).padStart(2, '0');
+        const seconds = String(remainingTime % 60).padStart(2, '0');
+        document.getElementById('timerDisplay').textContent = `${minutes}:${seconds}`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mojikakudai.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <main>
+        <div class="top-container">
+            <input type="text" id="textInput" placeholder="文字を入力" />
+            <button id="setButton">設定</button>
+          </div>
+          <div id="display"></div>
+        
+          <script>
+            const textInput = document.getElementById('textInput');
+            const setButton = document.getElementById('setButton');
+            const display = document.getElementById('display');
+        
+            textInput.addEventListener('input', () => {
+              if (textInput.value.trim() !== '') {
+                setButton.classList.add('blinking');
+              } else {
+                setButton.classList.remove('blinking');
+              }
+            });
+        
+            setButton.addEventListener('click', () => {
+              display.textContent = textInput.value;
+              textInput.value = '';
+              setButton.classList.remove('blinking');
+            });
+          </script>
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+</body>
+</html>
