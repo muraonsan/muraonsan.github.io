@@ -18,7 +18,8 @@ main {
     background-color: #FFD700; /* 黄色 */
     color: black;
   }
-  #confirm-button {
+  /*以下古い設定ボタン*/
+  #confirm-button-old {
     margin-top: 50px;
     padding: 1.5em 3em;
     font-size: 2.5rem;
@@ -28,7 +29,21 @@ main {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+  } 
+  /* 新しい確認ボタン*/
+  #confirm-button {
+    margin-top: 50px;
+    width: 240px; /* 横幅を指定 */
+    height: 130px; /* 縦幅を指定 */
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 9px; /* 角丸をなくすなら0、少し丸くするなら好みで調整 */
+    background-color: #2196F3; /* 青 */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
+
   /* 点滅アニメーション */
   @keyframes blink {
     0% { background-color: #2196F3; color: white; }
