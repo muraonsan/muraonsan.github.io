@@ -1,0 +1,44 @@
+main {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 50px;
+  }
+  .option-button {
+    padding: 1em 2em;
+    margin: 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 9px;
+    background-color: #2196F3; /* 青 */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .option-button.selected {
+    background-color: #FFD700; /* 黄色 */
+    color: black;
+  }
+  #confirm-button {
+    margin-top: 50px;
+    padding: 1.5em 3em;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 9px; /* 角丸の処理*/
+    background-color: #2196F3; /* 青 */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  /* 点滅アニメーション */
+  @keyframes blink {
+    0% { background-color: #2196F3; color: white; }
+    50% { background-color: white; color: #2196F3; }
+    100% { background-color: #2196F3; color: white; }
+  }
+  #confirm-button.blinking {
+    animation: blink 0.8s infinite;
+  }
+
+  body {
+    background-color: rgb(71,85,85);
+  }
