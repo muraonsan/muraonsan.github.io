@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mogura.css">
+    <link rel="stylesheet" href="css/moji.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
+    <div class="moji-senta">
+    <h1>モグラたたき！</h1></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button id="startButton">ゲームスタート</button>
+    <div class="moji-senta" >
+    <div id="score">スコア: 0</div>
+    <div id="timer">残り時間: 30秒</div></div>
+  
+    <div id="game">
+      <div class="hole" data-index="0"></div>
+      <div class="hole" data-index="1"></div>
+      <div class="hole" data-index="2"></div>
+      <div class="hole" data-index="3"></div>
+      <div class="hole" data-index="4"></div>
+      <div class="hole" data-index="5"></div>
+      <div class="hole" data-index="6"></div>
+      <div class="hole" data-index="7"></div>
+      <div class="hole" data-index="8"></div>
+    </div>
+  
+    <script>
+      const holes = document.querySelectorAll('.hole');
+      const scoreDisplay = document.getElementById('score');
+      const timerDisplay = document.getElementById('timer');
+      const startButton = document.getElementById('startButton');
+  
+      let score = 0;
+      let currentMole = null;
+      let gameInterval;
+      let timerInterval;
+      const gameDuration = 30; // 秒
+      let timeLeft = gameDuration;
+  
+      function showMole() {
+        if (currentMole !== null) {
+          holes[currentMole].innerHTML = '';
+        }
+  
+        const index = Math.floor(Math.random() * holes.length);
+        const mole = document.createElement('div');
+        mole.classList.add('mole');
+        holes[index].appendChild(mole);
+        currentMole = index;
+  
+        mole.addEventListener('click', () => {
+          score++;
+          scoreDisplay.textContent = `スコア: ${score}`;
+          mole.remove();
+        });
+      }
+  
+      function startGame() {
+        score = 0;
+        timeLeft = gameDuration;
+        scoreDisplay.textContent = `スコア: ${score}`;
+        timerDisplay.textContent = `残り時間: ${timeLeft}秒`;
+  
+        clearInterval(gameInterval);
+        clearInterval(timerInterval);
+  
+        gameInterval = setInterval(showMole, 800);
+  
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = `残り時間: ${timeLeft}秒`;
+          if (timeLeft <= 0) {
+            clearInterval(gameInterval);
+            clearInterval(timerInterval);
+            if (currentMole !== null) {
+              holes[currentMole].innerHTML = '';
+            }
+            alert(`ゲーム終了！あなたのスコアは ${score} 点です！`);
+          }
+        }, 1000);
+      }
+  
+      startButton.addEventListener('click', startGame);
+    </script>
+</body>
+</html>

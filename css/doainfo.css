@@ -3,7 +3,8 @@ main {
     text-align: center;
     margin: 50px;
   }
-  .option-button {
+  /*以下古い選択ボタン*/
+  .option-button-old {
     padding: 1em 2em;
     margin: 10px;
     font-size: 1.2rem;
@@ -14,10 +15,37 @@ main {
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  .option-button.selected {
+  .option-button.selected-old {
     background-color: #FFD700; /* 黄色 */
     color: black;
   }
+  /*あたらしい選択ボタン*/
+  .option-button {
+    padding: 10px 30px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #365e79;
+    border: 2px solid #ccc;
+    border-top-color: #b7c2d4;
+    border-left-color: #b7c2d4;
+    border-bottom-color: #365e79;
+    border-right-color: #365e79;
+    box-shadow: inset -1px -1px 0 #365e79;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .option-button.selected {
+    border-top-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-color: #fff6c3;
+    box-shadow: inset 1px 1px 0 #ccc;
+    color: #000;
+  }
+
   /*以下古い設定ボタン*/
   #confirm-button-old {
     margin-top: 50px;
@@ -31,7 +59,7 @@ main {
     transition: background-color 0.3s;
   } 
   /* 新しい確認ボタン*/
-  #confirm-button {
+  #confirm-button-2 {
     margin-top: 50px;
     width: 240px; /* 横幅を指定 */
     height: 130px; /* 縦幅を指定 */
@@ -44,11 +72,39 @@ main {
     transition: background-color 0.3s;
   }
 
+  #confirm-button {
+    margin-top: 50px;
+    width: 240px; /* 横幅を指定 */
+    height: 130px; /* 縦幅を指定 */
+    font-size: 37px;
+    color: #ffffff;
+    background-color: #365e79;
+    border: 2px solid #ccc;
+    border-top-color: #b7c2d4;
+    border-left-color: #b7c2d4;
+    border-bottom-color: #365e79;
+    border-right-color: #365e79;
+    box-shadow: inset -1px -1px 0 #365e79;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.1s ease-in-out;
+  }
+
+  #confirm-button:active {
+    border-top-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-color: #fff6c3;
+    box-shadow: inset 1px 1px 0 #ccc;
+    color: #000;
+  }
+
   /* 点滅アニメーション */
   @keyframes blink {
-    0% { background-color: #2196F3; color: white; }
-    50% { background-color: white; color: #2196F3; }
-    100% { background-color: #2196F3; color: white; }
+    0% { background-color: #365e79; color: white; }
+    50% { background-color: white; color: #365e79; }
+    100% { background-color: #365e79; color: white; }
   }
   #confirm-button.blinking {
     animation: blink 0.8s infinite;

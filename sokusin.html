@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MURON WEB</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/moji.css">
     <script src="js/script.js"></script>
     <style>
         .button-container {
@@ -18,6 +19,7 @@
             gap: 10px;
             margin-top: 20px;
         }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -28,12 +30,14 @@
             color: white;
             transition: background-color 0.3s, transform 0.2s;
         }
-        button:hover {
+        button:hover  {
             background-color: #0056b3;
         }
-        button:active {
+        button:active  {
             transform: scale(0.95);
+            
         }
+
         .indicator {
             width: 120px;
             height: 40px;
@@ -87,7 +91,9 @@
     </script>
     <!--以下オリジナル-->
 
-    <h1 class="mannaka">音源コントロール</h1> 
+    <div class="moji-senta">
+    <h1>音源コントロール</h1>
+    </div> 
     <div class="button-container">
         <button id="toggleAudio1">音源1: OFF</button>
         <button id="playAudio2">音源2 再生</button>

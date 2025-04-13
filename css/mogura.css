@@ -1,0 +1,56 @@
+main {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 40px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  #game {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .hole {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .mole {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  #score, #timer {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  #startButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: #87ceeb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .startButton:hover {
+    background-color: #6495ed;
+}
