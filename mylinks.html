@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <!--マイリンクズ専用の外部スクリプト-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
+    <main class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white min-h-screen">
+
+          <div class="max-w-5xl mx-auto px-4 py-8">
+            <h1 class="text-3xl font-bold mb-6 text-center">📚&nbsp;&nbsp;&nbsp;My Links&nbsp;&nbsp;&nbsp;📚</h1>
+
+            <!--中間線-->
+            <div class="flex items-center my-8">
+              <div class="flex-grow border-t border-gray-300"></div>
+              <span class="mx-4 text-gray-500">🎓 法政大学関連 🎓</span>
+              <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+        
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+              <!-- Hoppii -->
+              <a href="https://hoppii2025.hosei.ac.jp/portal/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://hoppii2025.hosei.ac.jp/portal/" alt="Hoppii" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Hoppii</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政大学 ポータルサイト</p>
+                </div>
+              </a>
+
+              <!--WEB Class-->
+
+              <a href="https://lms2025.hosei.ac.jp/webclass/?acs_=ec12120b" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://lms2025.hosei.ac.jp/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Web Class</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政 学習支援システム</p>
+                </div>
+              </a>
+
+              <!--HU syllabus-->
+
+              <a href="https://syllabus.hosei.ac.jp/web/show.php" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://syllabus.hosei.ac.jp/web/show.php" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">WEBシラバス</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政大学 WEBシラバス</p>
+                </div>
+              </a>
+
+            
+              <!--HU Gmail-->
+
+              <a href="https://gmail.hosei.ac.jp/login?SAMLRequest=fVLJTsMwEL0j8Q%2BW71kagYSsJlUpQlRiiWjgwM11xo0rxzYep4W%2Fx01BwAEkn56f3zKe6eyt12QHHpU1JZ2kOSVghG2V2ZT0qblOLuisOj2ZIu%2B1Y%2FMhdOYRXgfAQOJLg2y8KOngDbMcFTLDe0AWBFvN725ZkebMeRussJqS5VVJdddbKV0HrZC920qxXjtu7UbARjvprBBb56TpKHn%2BilUcYi0RB1gaDNyECOXFeZKfJcV5MynY4eQvlNSfTpfKHBv8F2t9JCG7aZo6qR9WzSiwUy34%2B8gu6SbG0pAK2x%2Fsa46odhGWXCNQMkcEH2LAhTU49OBX4HdKwNPjbUm7EByyLNvv9%2Bm3TMazziKolIt06zIukFbjaNnYzv%2BY6f%2FZ%2BZc3rb7Vp9kPqerzyw5Nlle11Uq8k7nWdr%2FwwEOsEfwQW1xb3%2FPwt9sknYyIahM5Utlg0IFQUkFLSVYdXX%2FvRtyYDw%3D%3D&RelayState=https%3A%2F%2Fwww.google.com%2Fa%2Fhosei.ac.jp%2FServiceLogin%3Fservice%3Dmail%26passive%3Dtrue%26rm%3Dfalse%26continue%3Dhttps%253A%252F%252Fmail.google.com%252Fmail%252F%26ss%3D1%26ltmpl%3Ddefault%26ltmplcache%3D2%26emr%3D1%26osid%3D1" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://https://mail.google.com/mail/u/3/#inbox" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Gmail</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政大学 Gmail</p>
+                </div>
+              </a>
+
+              <!--HU Zoom-->
+
+              <a href="https://hosei-ac-jp.zoom.us/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://hosei-ac-jp.zoom.us/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Zoom</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政大学 専用Zoom</p>
+                </div>
+              </a>
+
+              <!--HU ondemand-->
+              <a href="https://hosei-kyoiku.jp/ondemand/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://hosei-kyoiku.jp/ondemand/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">オンデマンドシステム</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">法政大学 ｵﾝﾃﾞﾏﾝﾄﾞｼｽﾃﾑ</p>
+                </div>
+              </a>
+
+            </div>
+
+            <!--中間線-->
+            <div class="flex items-center my-8">
+              <div class="flex-grow border-t border-gray-300"></div>
+              <span class="mx-4 text-gray-500">🛠 開発関連 🛠</span>
+              <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+
+            <!--開発ツール-->
+
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+              <!-- GPT -->
+              <a href="https://chatgpt.com/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://chatgpt.com/" alt="Hoppii" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">ChatGPT</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">OpenAI 生成AI</p>
+                </div>
+              </a>
+
+              <!--Gemini-->
+
+              <a href="https://gemini.google.com/app?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://gemini.google.com/app?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Gemini</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Google 生成AI</p>
+                </div>
+              </a>
+
+              <!--GitHub-->
+
+              <a href="https://github.com/muraonsan" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://github.com/muraonsan" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">GitHub</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">オンライン開発</p>
+                </div>
+              </a>
+            
+              </div>
+
+              <!--中間線-->
+            <div class="flex items-center my-8">
+              <div class="flex-grow border-t border-gray-300"></div>
+              <span class="mx-4 text-gray-500">🌐 SNS関連 🌐</span>
+              <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+
+            <div class="mt-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded">
+              <p class="font-semibold">⚠ 使用後は必ずログアウト！</p>
+              <p>インスタなどオンライン表示に注意！</p>
+            </div><br>
+
+             <!--SNS-->
+
+             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+              <!--X-->
+              <a href="https://x.com/home" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://x.com/home" alt="Hoppii" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">X(Twitter)</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300"></p>
+                </div>
+              </a>
+
+              <!--Discord-->
+
+              <a href="https://discord.com/login" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://discord.com/login" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Discord</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300"></p>
+                </div>
+              </a>
+
+              <!--INSTA-->
+
+              <a href="https://www.instagram.com/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://www.instagram.com/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Instagram</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300"></p>
+                </div>
+              </a>
+            
+              </div>
+
+              <!--中間線-->
+            <div class="flex items-center my-8">
+              <div class="flex-grow border-t border-gray-300"></div>
+              <span class="mx-4 text-gray-500">🧰 便利系 🧰</span>
+              <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+             <!--便利系-->
+
+             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+              <!--SpeedTest-->
+              <a href="https://www.speedtest.net/ja" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://www.speedtest.net/ja" alt="Hoppii" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">SpeedTest</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">ネットスピードテスト</p>
+                </div>
+              </a>
+
+              <!--Dirpy-->
+
+              <a href="https://dirpy.com/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://dirpy.com/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Dirpy</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Youtube 動画ﾀﾞｳﾝﾛｰﾄﾞ</p>
+                </div>
+              </a>
+
+              <!--WebArchive-->
+
+              <a href="https://web.archive.org/" target="_blank" class="flex items-center p-4 rounded-2xl shadow-md bg-white hover:bg-blue-50 transition dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img src="https://www.google.com/s2/favicons?domain=https://web.archive.org/" alt="YouTube" class="w-6 h-6 mr-3">
+                <div>
+                  <h2 class="text-base font-semibold">Web Archive</h2>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Webサイトアーカイブ</p>
+                </div>
+              </a>
+            
+              </div>
+
+
+
+
+
+
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+</body>
+</html>
