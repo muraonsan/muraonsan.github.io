@@ -58,18 +58,21 @@ header {
     background-color: #6495ed;
 }
 
+/*英語筆記体みたいな*/
 .pattaya-regular {
     font-family: "Pattaya", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
 
+/*手書き日本語みたいな*/
 .hachi-maru-pop-regular {
     font-family: "Hachi Maru Pop", cursive;
     font-weight: 400;
     font-style: normal;
   }
 
+  /*TIMSのフォントみたいな*/
 .macro-button {
     padding: 10px 30px;
     font-size: 16px;
