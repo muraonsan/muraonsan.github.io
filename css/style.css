@@ -98,7 +98,8 @@ header {
     color: #000;
   }
 
-  .macro-button:focus {
+  /*
+  .macro-button:hover {
     border-top-color: #999;
     border-left-color: #999;
     border-bottom-color: #fff;
@@ -107,6 +108,7 @@ header {
     box-shadow: inset 1px 1px 0 #ccc;
     color: #000;
   }
+    */
 
   .macro-button.on {
     border-top-color: #999;

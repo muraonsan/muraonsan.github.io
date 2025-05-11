@@ -24,7 +24,7 @@
     <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
     <main>
         <div class="container">
-            <h1>◇ 基本情報 ◇</h1>
+            <h1>◇ DASHBOARD ◇</h1>
         
             <!-- 現在時刻カード -->
             <div class="card" id="time-card">
@@ -75,12 +75,6 @@
             </div>
 
             <div class="card">
-              <h2>項目選択</h2>
-              <button class="macro-button" onclick="location.href='index.html'">ｲﾝﾃﾞｯｸｽﾍﾟｰｼﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='mylinks.html'">ﾘﾝｸﾒﾆｭｰ</button> &nbsp; <button class="macro-button" onclick="location.href='doainfo.html'">ﾄﾞｱ情報</button><br><br>
-              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">ｲﾝﾌｫﾃﾞｨｽﾌﾟﾚｲ</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
-            </div>
-
-            <div class="card">
               <h2>簡易タイマー</h2>
               <div class="mb-2">
                 <input type="number" id="timer-minutes" placeholder="分数を入力" min="1" class="p-2 border rounded w-32">
@@ -92,6 +86,12 @@
                 <button onclick="resetTimer()" class="timer-button">リセット</button>
               </div>
               <p id="timer-display" class="text-xl font-mono">残り時間：--:--</p>
+            </div>
+
+            <div class="card">
+              <h2>項目選択</h2>
+              <button class="macro-button" onclick="location.href='index.html'">ｲﾝﾃﾞｯｸｽﾍﾟｰｼﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='mylinks.html'">ﾘﾝｸﾒﾆｭｰ</button> &nbsp; <button class="macro-button" onclick="location.href='doainfo.html'">ﾄﾞｱ情報</button><br><br>
+              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">ｲﾝﾌｫﾃﾞｨｽﾌﾟﾚｲ</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
             </div>
             
             
