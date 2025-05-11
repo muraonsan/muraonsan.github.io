@@ -1,0 +1,88 @@
+<!-- display.html 表形式 -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>屋台情報 表示画面</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 2rem;
+      position: relative;
+    }
+    #clock {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1rem;
+      color: #555;
+    }
+    #updated {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      text-align: left;
+      font-size: 1.4rem;
+    }
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>屋台名</th>
+        <th>待ち時間</th>
+        <th>在庫状況</th>
+        <th>コメント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="stallName">-</td>
+        <td id="waitTime">-</td>
+        <td id="stockStatus">-</td>
+        <td id="comment">-</td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="updated"></div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit' };
+      document.getElementById('clock').textContent = now.toLocaleDateString('ja-JP', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      document.getElementById('stallName').textContent = data.name;
+      document.getElementById('waitTime').textContent = data.waitTime;
+      document.getElementById('stockStatus').textContent = data.stockStatus;
+      document.getElementById('comment').textContent = data.comment;
+      document.getElementById('updated').textContent = `更新：${data.updatedAt}`;
+    });
+  </script>
+</body>
+</html>

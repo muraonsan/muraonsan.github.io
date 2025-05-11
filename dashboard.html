@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dash.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+  <!--戻るボタン無効化-->
+  
+    <header id="common-header">
+        <div class="header-left">
+          <!--
+            <button class="back-button" onclick="location.href='main.html'">戻る</button>
+        -->
+            <h>MURAON WEB ー DASHBOARD</h>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+
+    <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
+    <main>
+        <div class="container">
+            <h1>◇ 基本情報 ◇</h1>
+        
+            <!-- 現在時刻カード -->
+            <div class="card" id="time-card">
+              <h2>現在時刻</h2>
+              <p id="current-time">読み込み中...</p>
+            </div>
+        
+            <!-- 天気情報カード -->
+            <div class="card" id="weather-info">
+              <h2>現在地の天気</h2>
+              <div id="current-weather"></div>
+            </div>
+
+            <div class="card" id="weather-info">
+                <h2>天気予報</h2>
+                <div id="current-weather"></div>
+                <div id="tomorrow-weather"></div>
+            </div>
+
+            <!--おしらせカード-->
+            <div class="card">
+              <h2>お知らせ</h2>
+              <p>共通<br>・天気予報取得には位置情報が必要です。アクセス許可を忘れずに</p>
+              <p>・インフォディスプレイは現在改造中です</p>
+              <p>25/05/02<br>・API不調とRSS接続不能により国内ニュースの取得が不可能になっています</p>
+            </div>
+        
+            <!-- ニュースカード -->
+            <div class="card" id="news-card">
+              <h2>米国最新ニュース</h2>
+              <ul id="news-list">
+                <li>読み込み中...</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h2>国内最新ニュース</h2>
+              <ul id="rss-news-list">読み込み中...</ul>
+            </div>
+
+            <div class="card">
+              <h2>各種リンク</h2>
+              <p>・<a href="https://hoppii2025.hosei.ac.jp/portal/">Hoppii</a></p>
+              <p>・<a href="https://gmail.hosei.ac.jp/login?SAMLRequest=fVLLTsMwELwj8Q%2BW782rQkJWE1RAiEoFIho4cHOddWPq2MHrtPD3uGmrwgEkn8bjeax3cvXZarIBh8qanKZRQgkYYWtlVjl9qe5Gl%2FSqOD%2BbIG91x6a9b8wzfPSAnoSXBtlwkdPeGWY5KmSGt4DMC7aYPsxZFiWsc9ZbYTUls9ucrqDWspGBJs3SdMZK%2FS5bC2LdrZcgm2UtV%2BsAUvJ6jJXtYs0Qe5gZ9Nz4ACXZxSgJJ62yMUvGLM3eKCkPTtfK7Bv8F2u5JyG7r6pyVD4tqkFgo2pwj4Edolq70hAJ2%2B7sS46oNgGWXCNQMkUE50PAG2uwb8EtwG2UgJfneU4b7ztkcbzdbqOTTMzjxiKoiIvovYu5QFoMo2VDO%2Fdjpv9n50dvWpzUJ%2FEPqeLwZbsms9vSaiW%2ByFRru71xwH2o4V0fWtxZ13L%2Ft1sapQOi6pEcqKw32IFQUkFNSVzsXX%2FvRtiYbw%3D%3D&RelayState=https%3A%2F%2Fwww.google.com%2Fa%2Fhosei.ac.jp%2FServiceLogin%3Fservice%3Dmail%26passive%3Dtrue%26rm%3Dfalse%26continue%3Dhttps%253A%252F%252Fmail.google.com%252Fmail%252F%26ss%3D1%26ltmpl%3Ddefault%26ltmplcache%3D2%26emr%3D1%26osid%3D1">法政専用Gmail</a></p>
+              <p>・<a href="https://hosei-ac-jp.zoom.us/">法政専用Zoom</a></p>
+              <p>・<a href="https://hosei-kyoiku.jp/ondemand/">オンデマンドシステム</a></p>
+              <p>・<a href="https://drive.google.com/drive/u/0/home">Google Drive</a></p>
+            </div>
+
+            <div class="card">
+              <h2>項目選択</h2>
+              <button class="macro-button" onclick="location.href='index.html'">ｲﾝﾃﾞｯｸｽﾍﾟｰｼﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='mylinks.html'">ﾘﾝｸﾒﾆｭｰ</button> &nbsp; <button class="macro-button" onclick="location.href='doainfo.html'">ﾄﾞｱ情報</button><br><br>
+              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">ｲﾝﾌｫﾃﾞｨｽﾌﾟﾚｲ</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
+            </div>
+
+            <div class="card">
+              <h2>簡易タイマー</h2>
+              <div class="mb-2">
+                <input type="number" id="timer-minutes" placeholder="分数を入力" min="1" class="p-2 border rounded w-32">
+              </div>
+              <br>
+              <div class="flex gap-2 mb-2">
+                <button onclick="startTimer()" class="timer-button start">スタート</button>
+                <button onclick="pauseTimer()" class="timer-button">一時停止</button>
+                <button onclick="resetTimer()" class="timer-button">リセット</button>
+              </div>
+              <p id="timer-display" class="text-xl font-mono">残り時間：--:--</p>
+            </div>
+            
+            
+
+          </div>
+        
+          <script src="js/dash.js"></script>
+          <audio id="timerSound" src="music/matinamiharuka.mp3" preload="auto"></audio>
+          <!--国内ニュース用のjava-->
+          <script>
+            async function fetchRSSNews() {
+  const rssUrl = 'https://news.yahoo.co.jp/rss/topics/domestic.xml';
+  const apiUrl = `https://api.feedrapp.info/api/v1/feed?url=${encodeURIComponent(rssUrl)}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const newsList = document.getElementById("rss-news-list");
+    newsList.innerHTML = '';
+
+    data.items.slice(0, 5).forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+      newsList.appendChild(li);
+    });
+  } catch (error) {
+    document.getElementById("rss-news-list").innerHTML = '<li>ニュースの取得に失敗しました</li>';
+    console.error("RSS取得エラー:", error);
+  }
+}
+
+fetchRSSNews();
+
+            </script>
+            
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+</body>
+</html>

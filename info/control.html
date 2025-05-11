@@ -1,0 +1,111 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>屋台情報 管理画面</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea, button {
+      font-size: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+    .buttons-group button {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+    .section-title {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    #setBtn {
+      background-color: #4a5568;
+      color: white;
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>屋台情報入力</h2>
+    <label>屋台名</label>
+    <input type="text" id="stallName">
+
+    <div class="section-title">待ち時間</div>
+    <div class="buttons-group">
+      <button onclick="setWait(5)">5分</button>
+      <button onclick="setWait(10)">10分</button>
+      <button onclick="setWait(15)">15分</button>
+      <button class="macro-button">A</button>
+    </div>
+
+    <div class="section-title">在庫状況</div>
+    <div class="buttons-group">
+      <button onclick="setStock('◎')">◎</button>
+      <button onclick="setStock('△')">△</button>
+      <button onclick="setStock('×')">×</button>
+    </div>
+
+    <label>コメント</label>
+    <textarea id="comment" rows="3"></textarea>
+
+    <button class="macro-button" id="setBtn" onclick="openDisplay()">設定</button>
+  </div>
+
+  <script>
+    let waitTime = '';
+    let stockStatus = '';
+
+    function setWait(mins) {
+      waitTime = `${mins}分`;
+    }
+    function setStock(status) {
+      stockStatus = status;
+    }
+
+    let displayWindow = null;
+
+    function openDisplay() {
+      const name = document.getElementById('stallName').value;
+      const comment = document.getElementById('comment').value;
+      const now = new Date();
+
+      const data = {
+        name,
+        waitTime,
+        stockStatus,
+        comment,
+        updatedAt: now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+      };
+
+      if (!displayWindow || displayWindow.closed) {
+        displayWindow = window.open('display.html', 'displayWindow', 'width=800,height=600');
+        setTimeout(() => {
+          displayWindow.postMessage(data, '*');
+        }, 500);
+      } else {
+        displayWindow.postMessage(data, '*');
+      }
+    }
+  </script>
+</body>
+</html>

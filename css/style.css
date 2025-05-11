@@ -72,7 +72,6 @@ header {
     font-style: normal;
   }
 
-  /*TIMSのフォントみたいな*/
 .macro-button {
     padding: 10px 30px;
     font-size: 16px;
@@ -99,9 +98,49 @@ header {
     color: #000;
   }
 
+  .macro-button.on {
+    border-top-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-color: #fff6c3;
+    box-shadow: inset 1px 1px 0 #ccc;
+    color: #000;
+  }
+
+   /*TIMSのフォントみたいな*/
   .dotgothic16-regular {
     font-family: "DotGothic16", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
+
+  /*隠しボタン*/
+  .whitebutton {
+    background-color: #f0f8ff;
+  border: none;
+  color: #f0f8ff; /* テキストも背景と同色で隠す */
+  cursor: pointer;
+  padding: 10px 20px;
+  }
   
+  .whitebutton:hover,
+  .invisible-button:focus {
+    outline: 1px dashed #a0c4ff; /* ホバー時にうっすら枠が出る */
+    color: #333; /* テキストだけ見えるようにしても良い */
+    background-color: #f0f8ff;
+  }
+
+  /*汎用注意ボックス*/
+  .notice-box {
+    margin: 20px auto;
+    padding: 15px 20px;
+    width: fit-content;
+    max-width: 90%;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 10px;
+    color: #856404;
+    text-align: center;
+    font-family: sans-serif;
+  }

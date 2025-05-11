@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLタグ サンプルコードサイト</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.answer {
+    font-size: 1em;
+    color: #555;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: monospace;
+    color: #d14;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>HTMLタグ サンプルコードサイト</h1>
+
+        <div class="card">
+            <div class="question">
+                <strong>Q: &lt;br&gt;は何をするタグですか？</strong>
+            </div>
+            <div class="answer">
+                <p><strong>A:</strong> &lt;br&gt;タグは改行を行います。文章やテキストを次の行に移動させる時に使います。</p>
+                <pre><code>&lt;p&gt;これが最初の行。&lt;br&gt;これが改行後の行。&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question">
+                <strong>Q: &amp;nbsp;は何をするものですか？</strong>
+            </div>
+            <div class="answer">
+                <p><strong>A:</strong> &amp;nbsp;は「ノーブレークスペース」を意味し、通常の空白文字と違い、改行されません。文中でスペースを挿入したい時に使います。</p>
+                <pre><code>&lt;p&gt;これは&amp;nbsp;スペース&amp;nbsp;の例です。&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

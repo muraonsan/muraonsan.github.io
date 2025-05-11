@@ -1,0 +1,62 @@
+/* styles.css */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      flex: 1 1 calc(33% - 20px);
+    }
+  }
+
+ /*タイマー*/
+ .timer-button {
+  padding: 6px 16px;
+  border: 1px solid #cbd5e0; /* 薄いグレーの縁 */
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: #f7fafc; /* 薄いグレーベージュ系 */
+  color: #2d3748; /* ダークグレー */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-right: 6px;
+}
+
+.timer-button:hover {
+  background-color: #e2e8f0; /* ホバーでやや濃く */
+  border-color: #a0aec0;
+}
+
+.timer-button:active {
+  background-color: #cbd5e0;
+}
