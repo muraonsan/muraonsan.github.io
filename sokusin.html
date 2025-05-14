@@ -72,5 +72,18 @@
             setInterval(updateClock, 1000);
         };
     </script>
+
+    <!--ipad用のアニメーションん-->
+<script>
+  document.querySelectorAll('.macro-button').forEach(button => {
+  button.addEventListener('touchstart', () => {
+    button.classList.add('active-touch');
+  });
+  button.addEventListener('touchend', () => {
+    button.classList.remove('active-touch');
+  });
+});
+</script>
+
 </body>
 </html>
