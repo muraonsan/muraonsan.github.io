@@ -1,4 +1,4 @@
-  .macro-button:hover {
+  .macro-button:active {
     border-top-color: #999;
     border-left-color: #999;
     border-bottom-color: #fff;
