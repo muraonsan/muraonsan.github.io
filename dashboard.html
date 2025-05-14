@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dash.css">
     <script src="js/script.js"></script>
+
+    <script>
+    // DOMが読み込まれたら実行
+    document.addEventListener("DOMContentLoaded", function () {
+      // タッチイベントが存在するか、navigator.maxTouchPoints が 0 より大きいかで判定
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+      if (isTouchDevice) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'touch.css'; // タッチ端末用のCSSファイル
+        document.head.appendChild(link);
+      }
+    });
+  </script>
+  
 </head>
 <body>
   <!--戻るボタン無効化-->
@@ -91,7 +107,7 @@
             <div class="card">
               <h2>項目選択</h2>
               <button class="macro-button" onclick="location.href='index.html'">ｲﾝﾃﾞｯｸｽﾍﾟｰｼﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='mylinks.html'">ﾘﾝｸﾒﾆｭｰ</button> &nbsp; <button class="macro-button" onclick="location.href='doainfo.html'">ﾄﾞｱ情報</button><br><br>
-              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">ｲﾝﾌｫﾃﾞｨｽﾌﾟﾚｲ</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
+              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">VALO支援</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
             </div>
             
             

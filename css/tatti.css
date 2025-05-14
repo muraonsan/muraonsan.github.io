@@ -1,0 +1,9 @@
+  .macro-button:hover {
+    border-top-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-color: #fff6c3;
+    box-shadow: inset 1px 1px 0 #ccc;
+    color: #000;
+  }
