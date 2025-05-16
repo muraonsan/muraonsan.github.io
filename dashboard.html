@@ -65,20 +65,18 @@
               <h2>お知らせ</h2>
               <p>共通<br>・天気予報取得には位置情報が必要です。アクセス許可を忘れずに</p>
               <p>・インフォディスプレイは現在改造中です</p>
-              <p>25/05/02<br>・API不調とRSS接続不能により国内ニュースの取得が不可能になっています</p>
+              <p>25/05/17<br>・API不調とRSS接続不能が続いたためニュースを廃止</p>
             </div>
         
-            <!-- ニュースカード -->
-            <div class="card" id="news-card">
-              <h2>米国最新ニュース</h2>
-              <ul id="news-list">
-                <li>読み込み中...</li>
-              </ul>
-            </div>
+            <!-- 祝日カードとか -->
+            <div class="card" id="history-card">
+              <h2>今日は何の日？</h2>
+              <ul id="history-list"><li>読み込み中...</li></ul>
+              </div>
 
-            <div class="card">
-              <h2>国内最新ニュース</h2>
-              <ul id="rss-news-list">読み込み中...</ul>
+            <div class="card" id="holiday-card">
+              <h2>本日の祝日</h2>
+              <p id="holiday-info">読み込み中...</p>
             </div>
 
             <div class="card">
@@ -88,6 +86,7 @@
               <p>・<a href="https://hosei-ac-jp.zoom.us/">法政専用Zoom</a></p>
               <p>・<a href="https://hosei-kyoiku.jp/ondemand/">オンデマンドシステム</a></p>
               <p>・<a href="https://drive.google.com/drive/u/0/home">Google Drive</a></p>
+              <p>・<a href="https://ai-tool.userlocal.jp/ai_classifier">生成AIチェッカー</a></p>
             </div>
 
             <div class="card">
@@ -107,7 +106,7 @@
             <div class="card">
               <h2>項目選択</h2>
               <button class="macro-button" onclick="location.href='index.html'">ｲﾝﾃﾞｯｸｽﾍﾟｰｼﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='mylinks.html'">ﾘﾝｸﾒﾆｭｰ</button> &nbsp; <button class="macro-button" onclick="location.href='doainfo.html'">ﾄﾞｱ情報</button><br><br>
-              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button">VALO支援</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
+              <button class="macro-button" onclick="location.href='sokusin.html'">ｻｳﾝﾄﾞ操作</button> &nbsp; <button class="macro-button" onclick="location.href='cloud.html'">ｸﾗｳﾄﾞ</button> &nbsp; <button class="macro-button" onclick="location.href='timer.html'">ﾀｲﾏｰ</button>
             </div>
             
             
@@ -163,6 +162,59 @@ fetchRSSNews();
     button.classList.remove('active-touch');
   });
 });
+</script>
+
+<!--今日はなんのひ用-->
+<script>
+async function fetchTodayInHistory() {
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  const url = `https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const list = document.getElementById("history-list");
+    list.innerHTML = '';
+    data.events.slice(0, 5).forEach(event => {
+      const li = document.createElement('li');
+      li.textContent = `${event.year}年 - ${event.text}`;
+      list.appendChild(li);
+    });
+  } catch (e) {
+    document.getElementById("history-list").innerHTML = '<li>取得失敗</li>';
+    console.error("歴史取得エラー:", e);
+  }
+}
+
+fetchTodayInHistory();
+</script>
+
+<!--日本の祝日用-->
+<script>
+async function fetchHoliday() {
+  const today = new Date().toISOString().split("T")[0];
+  const url = "https://holidays-jp.github.io/api/v1/date.json";
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    const info = document.getElementById("holiday-info");
+
+    if (data[today]) {
+      info.textContent = data[today];
+    } else {
+      info.textContent = "本日は祝日ではありません。";
+    }
+  } catch (e) {
+    document.getElementById("holiday-info").textContent = "祝日の取得に失敗しました。";
+    console.error("祝日取得エラー:", e);
+  }
+}
+
+fetchHoliday();
 </script>
 
 </body>
