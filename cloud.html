@@ -5,17 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MURON WEB</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/moji.css">
     <script src="js/script.js"></script>
 </head>
 <body>
     <header id="common-header">
         <div class="header-left">
-            <button class="back-button" onclick="location.href='dashboard.html'">戻る</button>
+            <button onclick="location.href='dashboard.html'">ダッシュボードに戻る</button>
         </div>
         <div class="header-right" id="clock"></div>
     </header>
     <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
     <main>
+        <h2>&nbsp;&nbsp;&nbsp;村音WEB&nbsp;&nbsp;簡易掲示板システム</h2>
+        <p style="font-size: 15px;">&nbsp;&nbsp;このシステムは仮設です。<br>&nbsp;&nbsp;外部サービスを使用しているので個人名等記載のあるものはアップロードしないでください。</p>
+
+
+        <!--ここから掲示板-->
+        <div class="moji-senta">
+  <input type="text" id="name" placeholder="名前"><br>
+  <input type="text" id="message" placeholder="メッセージ"><br>
+  <button onclick="postMessage()">投稿</button>
+  <ul id="messages"></ul>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabase = supabase.createClient(
+      'https://szawyuurngypoiispviu.supabase.co',         // ここを自分のProject URLに書き換えてね
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXd5dXVybmd5cG9paXNwdml1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0NTMyMTYsImV4cCI6MjA2MzAyOTIxNn0.62rwc1HO9FIsbr9YFLLoBiAOnV-b53rT8f3wPF9OTCk'      // ここも自分のanonキーに
+    );
+
+    async function postMessage() {
+      const name = document.getElementById("name").value;
+      const msg = document.getElementById("message").value;
+      if (!name || !msg) return alert("両方入力してね！");
+      await supabase.from("messages").insert([{ name: name, message: msg }]);
+      fetchMessages(); // 投稿後に再読み込み
+    }
+
+    async function fetchMessages() {
+      const { data, error } = await supabase
+        .from("messages")
+        .select("*")
+        .order("created_at", { ascending: false });
+      const ul = document.getElementById("messages");
+      ul.innerHTML = "";
+      data.forEach(m => {
+        const li = document.createElement("li");
+        li.textContent = `${m.name}: ${m.message}`;
+        ul.appendChild(li);
+      });
+    }
+
+    fetchMessages();
+  </script>
+  </div>
+
         </main>
     <script>
         window.onload = function() {
