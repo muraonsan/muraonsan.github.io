@@ -30,23 +30,27 @@
 
 
         <!--ここから掲示板-->
-        <input type="text" id="name" placeholder="名前"><br>
-  <input type="text" id="message" placeholder="メッセージ"><br>
-  <input type="file" id="fileInput"><br>
-  <button onclick="postMessage()">投稿</button>
+        <input type="text" id="name" placeholder="名前">
+  <input type="text" id="message" placeholder="メッセージ">
+  <input type="file" id="fileInput">
+  <button id="postButton">投稿</button>
 
-  <h2>投稿一覧</h2>
+  <h2>📝 投稿一覧</h2>
   <ul id="messages"></ul>
 
+  <!-- Supabaseライブラリの読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- 掲示板のスクリプト -->
   <script>
-    // ここに自分のSupabase情報を入れてください
-    const supabase = supabase.createClient(
-      'https://szawyuurngypoiispviu.supabase.co', // ←あなたのURL
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXd5dXVybmd5cG9paXNwdml1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0NTMyMTYsImV4cCI6MjA2MzAyOTIxNn0.62rwc1HO9FIsbr9YFLLoBiAOnV-b53rT8f3wPF9OTCk'                 // ←あなたのキー
+    // Supabase初期化（↓あなたの情報に置き換えてください）
+    const { createClient } = supabase;
+    const supabaseClient = createClient(
+      'https://szawyuurngypoiispviu.supabase.co',      // ← あなたのProject URL
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXd5dXVybmd5cG9paXNwdml1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0NTMyMTYsImV4cCI6MjA2MzAyOTIxNn0.62rwc1HO9FIsbr9YFLLoBiAOnV-b53rT8f3wPF9OTCk'                      // ← あなたのanon公開キー
     );
 
-    // 投稿の表示関数
+    // 投稿表示関数
     function renderMessage(m) {
       const li = document.createElement("li");
       li.textContent = `${m.name}: ${m.message} (${new Date(m.created_at).toLocaleString()})`;
@@ -54,7 +58,6 @@
       if (m.file_url) {
         const img = document.createElement("img");
         img.src = m.file_url;
-        img.style.maxWidth = "200px";
         li.appendChild(document.createElement("br"));
         li.appendChild(img);
       }
@@ -64,20 +67,20 @@
 
     // 投稿処理
     async function postMessage() {
-      const name = document.getElementById("name").value;
-      const msg = document.getElementById("message").value;
+      const name = document.getElementById("name").value.trim();
+      const msg = document.getElementById("message").value.trim();
       const file = document.getElementById("fileInput").files[0];
       let fileUrl = null;
 
       if (!name || !msg) {
-        alert("名前とメッセージを入力してください。");
+        alert("名前とメッセージを入力してください！");
         return;
       }
 
-      // 添付ファイルがある場合アップロード
       if (file) {
         const filePath = `${Date.now()}_${file.name}`;
-        const { error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabaseClient
+          .storage
           .from('attachments')
           .upload(filePath, file);
 
@@ -86,27 +89,27 @@
           return;
         }
 
-        const { data: publicData } = supabase.storage
+        const { data: publicUrlData } = supabaseClient
+          .storage
           .from('attachments')
           .getPublicUrl(filePath);
 
-        fileUrl = publicData.publicUrl;
+        fileUrl = publicUrlData.publicUrl;
       }
 
-      await supabase.from("messages").insert([{
+      await supabaseClient.from("messages").insert([{
         name: name,
         message: msg,
         file_url: fileUrl
       }]);
 
-      // 投稿後にフォームクリア
       document.getElementById("message").value = "";
       document.getElementById("fileInput").value = "";
     }
 
-    // 投稿を取得して表示
+    // 投稿一覧取得
     async function fetchMessages() {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from("messages")
         .select("*")
         .order("created_at", { ascending: false });
@@ -118,41 +121,26 @@
       });
     }
 
-    // リアルタイム更新
-    supabase
-      .channel('public:messages')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' },
-        (payload) => {
-          const m = payload.new;
-          document.getElementById("messages").prepend(renderMessage(m));
-        }
-      )
-      .subscribe();
-
     // 初期表示
-    fetchMessages();
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchMessages();
+
+      document.getElementById("postButton").addEventListener("click", postMessage);
+
+      // リアルタイム購読
+      supabaseClient
+        .channel('public:messages')
+        .on(
+          'postgres_changes',
+          { event: 'INSERT', schema: 'public', table: 'messages' },
+          payload => {
+            const m = payload.new;
+            document.getElementById("messages").prepend(renderMessage(m));
+          }
+        )
+        .subscribe();
+    });
   </script>
-
-        </main>
-    <script>
-        window.onload = function() {
-            loadCommonHeader();
-            updateClock();
-            setInterval(updateClock, 1000);
-        };
-    </script>
-
-    <!--ipad用のアニメーションん-->
-<script>
-  document.querySelectorAll('.macro-button').forEach(button => {
-  button.addEventListener('touchstart', () => {
-    button.classList.add('active-touch');
-  });
-  button.addEventListener('touchend', () => {
-    button.classList.remove('active-touch');
-  });
-});
-</script>
 
 </body>
 </html>
