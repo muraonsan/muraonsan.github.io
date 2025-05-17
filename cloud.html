@@ -126,6 +126,47 @@
   });
 }
 
+//削除機能
+function renderMessage(m) {
+  const li = document.createElement("li");
+  li.setAttribute("data-id", m.id); // 投稿IDを保持
+  li.textContent = `${m.name}: ${m.message} (${new Date(m.created_at).toLocaleString()})`;
+
+  if (m.file_url) {
+    const img = document.createElement("img");
+    img.src = m.file_url;
+    li.appendChild(document.createElement("br"));
+    li.appendChild(img);
+  }
+
+  // 🗑️ 削除ボタン追加
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "削除";
+  delBtn.style.marginLeft = "1em";
+  delBtn.onclick = () => deleteMessage(m.id, li);
+  li.appendChild(delBtn);
+
+  return li;
+}
+
+//削除機能の関数
+async function deleteMessage(id, element) {
+  const confirmed = confirm("この投稿を削除しますか？");
+  if (!confirmed) return;
+
+  const { error } = await supabaseClient
+    .from("messages")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    alert("削除に失敗しました：" + error.message);
+  } else {
+    element.remove(); // DOMからも消す
+  }
+}
+
+
     // 初期表示
     document.addEventListener("DOMContentLoaded", () => {
       fetchMessages();
