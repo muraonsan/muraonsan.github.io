@@ -59,22 +59,32 @@
   const category = document.getElementById("category").value;
   const note = document.getElementById("note").value;
 
-  await supabaseClient.from("items").insert([
+  if (!name || !expiry) {
+    alert("商品名と期限は必須です！");
+    return;
+  }
+
+  const { error } = await supabaseClient.from("items").insert([
     { name, expiry_date: expiry, category, note }
   ]);
 
+  if (error) {
+    console.error("登録エラー:", error);
+    alert("登録に失敗しました");
+    return;
+  }
+
+  alert("登録完了！");
   fetchItems();
 }
-
 //表示処理
-async function fetchItems() {
-  const { data } = await supabaseClient
-    .from("items")
-    .select("*")
-    .order("expiry_date", { ascending: true });
+const { data, error } = await supabaseClient
+  .from("items")
+  .select("*")
+  .order("expiry_date", { ascending: true });
 
 if (error || !data) {
-  console.error("エラー:", error);
+  console.error("データ取得エラー:", error);
   return;
 }
   const today = new Date();
@@ -88,7 +98,34 @@ if (error || !data) {
 
     document.getElementById("itemList").appendChild(li);
   });
+
+  async function fetchItems() {
+  const { data, error } = await supabaseClient
+    .from("items")
+    .select("*")
+    .order("expiry_date", { ascending: true });
+
+  if (error || !data) {
+    console.error("データ取得エラー:", error);
+    return;
+  }
+
+  const today = new Date();
+  const list = document.getElementById("itemList");
+  list.innerHTML = "";
+
+  data.forEach(item => {
+    const daysLeft = Math.ceil((new Date(item.expiry_date) - today) / (1000 * 60 * 60 * 24));
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ${item.expiry_date}（残り${daysLeft}日）`;
+
+    if (daysLeft <= 3) li.style.color = "red";
+    else if (daysLeft <= 7) li.style.color = "orange";
+
+    list.appendChild(li);
+  });
 }
+
 
 </script>
 
