@@ -88,5 +88,15 @@ async function fetchItems() {
 
 </script>
 
+<!--supabase用-->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const { createClient } = supabase;
+  const supabaseClient = createClient(
+    'https://szawyuurngypoiispviu.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXd5dXVybmd5cG9paXNwdml1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0NTMyMTYsImV4cCI6MjA2MzAyOTIxNn0.62rwc1HO9FIsbr9YFLLoBiAOnV-b53rT8f3wPF9OTCk'
+  );
+</script>
+
 </body>
 </html>
