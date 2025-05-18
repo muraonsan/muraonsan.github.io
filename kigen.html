@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button onclick="location.href='main.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
+    <main>
+        <h1>&nbsp;&nbsp;保証期限等管理ページ</h1>
+        <p>ここで期限を管理する物品名・期限・カテゴリー・メモを入力できます。</p>
+
+        <!--ここから保証管理-->
+        <input type="text" id="name" placeholder="商品名"><br>
+        <input type="date" id="expiry_date">&nbsp;&nbsp;&nbsp;
+        <select id="category">
+         <option value="食品">食品</option>
+         <option value="家電">家電</option>
+        </select>&nbsp;&nbsp;&nbsp;
+        <textarea id="note" placeholder="メモ（任意）"></textarea>&nbsp;&nbsp;
+        <button onclick="addItem()">登録</button>
+
+        </main>
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+
+    <!--ipad用のアニメーションん-->
+<script>
+  document.querySelectorAll('.macro-button').forEach(button => {
+  button.addEventListener('touchstart', () => {
+    button.classList.add('active-touch');
+  });
+  button.addEventListener('touchend', () => {
+    button.classList.remove('active-touch');
+  });
+});
+</script>
+
+<!--登録管理よう-->
+<script>
+    //登録処理
+    async function addItem() {
+  const name = document.getElementById("name").value;
+  const expiry = document.getElementById("expiry_date").value;
+  const category = document.getElementById("category").value;
+  const note = document.getElementById("note").value;
+
+  await supabaseClient.from("items").insert([
+    { name, expiry_date: expiry, category, note }
+  ]);
+
+  fetchItems();
+}
+
+//表示処理
+async function fetchItems() {
+  const { data } = await supabaseClient
+    .from("items")
+    .select("*")
+    .order("expiry_date", { ascending: true });
+
+  const today = new Date();
+  data.forEach(item => {
+    const daysLeft = Math.ceil((new Date(item.expiry_date) - today) / (1000 * 60 * 60 * 24));
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ${item.expiry_date}（残り${daysLeft}日）`;
+
+    if (daysLeft <= 3) li.style.color = "red";
+    else if (daysLeft <= 7) li.style.color = "orange";
+
+    document.getElementById("itemList").appendChild(li);
+  });
+}
+
+</script>
+
+</body>
+</html>
