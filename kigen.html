@@ -83,7 +83,7 @@
   data.forEach(item => {
   const daysLeft = Math.ceil((new Date(item.expiry_date) - today) / (1000 * 60 * 60 * 24));
   const li = document.createElement("li");
-  li.textContent = `${item.name} - ${item.expiry_date}（残り${daysLeft}日）`;
+  li.innerHTML = `<strong>${item.name}</strong> - ${item.expiry_date}（残り${daysLeft}日）<br>📝メモ: ${item.note}`;
 
   // 色分け
   if (daysLeft <= 3) li.style.color = "red";
