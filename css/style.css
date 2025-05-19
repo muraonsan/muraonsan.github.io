@@ -156,3 +156,48 @@ header {
     text-align: center;
     font-family: sans-serif;
   }
+
+  .reloadbutton {
+    padding: 10px 30px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #365e79;
+    border: 2px solid #ccc;
+    border-top-color: #b7c2d4;
+    border-left-color: #b7c2d4;
+    border-bottom-color: #365e79;
+    border-right-color: #365e79;
+    box-shadow: inset -1px -1px 0 #365e79;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .reloadbutton:active {
+    border-top-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-color: #fff6c3;
+    box-shadow: inset 1px 1px 0 #ccc;
+    color: #000;
+  }
+
+  @keyframes flash-reload {
+  0%, 100% {
+    background-color: #365e79;
+    color: #ffffff;
+  }
+  50% {
+    background-color: #ffffff;
+    color: #365e79;
+  }
+}
+
+.reloadbutton.flash {
+  animation: flash-reload 1s steps(1, start) infinite;
+}
+
+.reloadbutton.flash:active {
+  animation: none !important;
+}
