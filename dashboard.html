@@ -33,6 +33,8 @@
             <button class="back-button" onclick="location.href='main.html'">戻る</button>
         -->
             <h>MURAON WEB ー DASHBOARD</h>
+            &nbsp;&nbsp;&nbsp;
+            <button class="reloadbutton" onclick="location.reload()">再読み込み</button>
         </div>
         <div class="header-right" id="clock"></div>
     </header>
@@ -221,6 +223,18 @@ async function fetchHoliday() {
 }
 
 fetchHoliday();
+</script>
+
+<!--再読み込みボタン-->
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const btn = document.querySelector('.reloadbutton');
+      if (btn) {
+        btn.classList.add('flash');
+      }
+    }, 60000); // 60秒後に開始
+  });
 </script>
 
 </body>
