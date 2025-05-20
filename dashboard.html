@@ -76,9 +76,9 @@
               <ul id="history-list"><li>読み込み中...</li></ul>
               </div>
 
-            <div class="card" id="holiday-card">
-              <h2>本日の祝日</h2>
-              <p id="holiday-info">読み込み中...</p>
+            <div class="card" id="us-news-card">
+              <h2>U.S.News</h2>
+              <ul id="us-news-list"><li>読み込み中...</li></ul>
             </div>
 
             <div class="card">
@@ -201,6 +201,7 @@ fetchTodayInHistory();
 </script>
 
 <!--日本の祝日用-->
+<!--廃止
 <script>
 async function fetchHoliday() {
   const today = new Date().toISOString().split("T")[0];
@@ -224,6 +225,7 @@ async function fetchHoliday() {
 
 fetchHoliday();
 </script>
+-->
 
 <!--再読み込みボタン-->
 <script>
@@ -235,6 +237,33 @@ fetchHoliday();
       }
     }, 60000); // 60秒後に開始
   });
+</script>
+
+<!--US News-->
+<script>
+async function fetchUSNews() {
+  const apiKey = 'd1dc9319bc174dc0ac4e7ab06a2862ae'; // ←あなたのAPIキーに置き換えてください
+  const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    const newsList = document.getElementById("us-news-list");
+    newsList.innerHTML = '';
+
+    data.articles.forEach(article => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+      newsList.appendChild(li);
+    });
+  } catch (error) {
+    document.getElementById("us-news-list").innerHTML = '<li>ニュースの取得に失敗しました</li>';
+    console.error("米国ニュース取得エラー:", error);
+  }
+}
+
+fetchUSNews();
 </script>
 
 </body>
