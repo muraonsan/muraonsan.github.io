@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURON WEB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<style>
+    main {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    #qrcode {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    #saveButton {
+      margin-top: 40px; /* QRコード画像の2段分下に配置 */
+      display: none;
+    }
+</style>
+<body>
+    <header id="common-header">
+        <div class="header-left">
+            <button class="back-button" onclick="location.href='dashboard.html'">戻る</button>
+        </div>
+        <div class="header-right" id="clock"></div>
+    </header>
+    <!--以下オリジナル。文字寄せ使用する際はcss引用追加せよ-->
+    <main>
+        <h1>QRコードを作ろう</h1>
+  <input type="text" id="urlInput" placeholder="URLを入力" size="40">
+  <button onclick="generateQRCode()">生成</button>
+
+  <div id="qrcode"></div>
+
+  <button id="saveButton" onclick="saveQRCode()">QRコードを保存</button>
+        </main>
+
+
+    <script>
+        window.onload = function() {
+            loadCommonHeader();
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+
+    <!--qr用スクリプト-->
+    <script>
+    function generateQRCode() {
+      const url = document.getElementById("urlInput").value;
+      const qrContainer = document.getElementById("qrcode");
+      const saveButton = document.getElementById("saveButton");
+
+      qrContainer.innerHTML = ""; // 前のQRを削除
+      saveButton.style.display = "none";
+
+      if (url.trim() === "") {
+        alert("URLを入力してください");
+        return;
+      }
+
+      const qr = new QRCode(qrContainer, {
+        text: url,
+        width: 256,
+        height: 256
+      });
+
+      // 少し遅らせて表示されてからボタンを出す
+      setTimeout(() => {
+        saveButton.style.display = "inline-block";
+      }, 500);
+    }
+
+    function saveQRCode() {
+      const img = document.querySelector("#qrcode img");
+      if (img) {
+        const link = document.createElement("a");
+        link.href = img.src;
+        link.download = "qr-code.png";
+        link.click();
+      } else {
+        alert("QRコードが生成されていません");
+      }
+    }
+  </script>
+
+    <!--ipad用のアニメーションん-->
+<script>
+  document.querySelectorAll('.macro-button').forEach(button => {
+  button.addEventListener('touchstart', () => {
+    button.classList.add('active-touch');
+  });
+  button.addEventListener('touchend', () => {
+    button.classList.remove('active-touch');
+  });
+});
+</script>
+
+</body>
+</html>
