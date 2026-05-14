@@ -3,68 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MURON WEB</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/moji.css">
-    <script src="js/script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Pattaya&display=swap" rel="stylesheet">
+    <title>My Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --accent: #0056b3;
+            --accent-hover: #004494;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* 時計 */
+        .clock-card {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        #time-display {
+            font-size: 3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        #date-display {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+        }
+
+        /* 天気 */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .weather-item {
+            background: var(--bg-color);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .weather-value { font-size: 1.5rem; font-weight: bold; }
+        .weather-label { font-size: 0.8rem; color: var(--text-sub); }
+
+        /* タイマー */
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        #timer-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+        }
+        button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: var(--accent-hover); }
+        input[type="number"] {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* 共通：ボタン・ショートカット */
+        .shortcuts-card { grid-column: 1 / -1; }
+        .category-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+        .category-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .link-item {
+            display: block;
+            padding: 15px;
+            background: var(--bg-color);
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .link-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <header id="common-header">
-        <div class="header-left">
-            MURAON WEB
-        </div>
-        <div class="header-right" id="clock"></div>
-    </header>
-    <main>
 
-        <div class="moji-senta pattaya-regular">
-        <p style="color:rgb(139, 177, 235); font-size: 45px;">WELCOME TO MY SITE!</p>
+    <div class="container">
+        <!-- 時計セクション -->
+        <div class="card clock-card">
+            <div id="date-display">読み込み中...</div>
+            <div id="time-display">00:00:00</div>
         </div>
-        <div class="moji-senta hachi-maru-pop-regular">
-            <p style="font-size:20px">このサイトは むらおん の個人webサイトです</p>
-            <p>Twitterは<a href=https://x.com/Gerda_me_wo>こちら</a></p>
-            <p>Discordは<a href=https://discord.com/users/569826613827469326>こちら</a></p>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <button class="whitebutton" onclick="location.href='dashboard.html'">ﾀﾞｯｼｭﾎﾞｰﾄﾞ</button>
-        </div>
-        
 
-        </main>
+        <!-- 天気セクション -->
+        <div class="card">
+            <h3 style="margin-top: 0;">気象情報</h3>
+            <div class="category-buttons" id="weather-location-buttons">
+                <button class="category-btn active" onclick="setWeatherLocation('current')">現在地</button>
+                <button class="category-btn" onclick="setWeatherLocation('zushi')">逗子エリア</button>
+                <button class="category-btn" onclick="setWeatherLocation('machida')">町田市相原町</button>
+            </div>
+            <p id="location-status" style="font-size: 0.8rem; color: #666;">位置情報を取得中...</p>
+            <div class="weather-grid">
+                <div class="weather-item">
+                    <div class="weather-label">気温</div>
+                    <div class="weather-value" id="w-temp">--°C</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-label">体感気温</div>
+                    <div class="weather-value" id="w-feels">--°C</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-label">降水予報 (直近)</div>
+                    <div class="weather-value" id="w-rain">-- mm</div>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-label">現地気圧</div>
+                    <div class="weather-value" id="w-press">-- hPa</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- タイマーセクション -->
+        <div class="card">
+            <h3 style="margin-top: 0;">簡易タイマー</h3>
+            <div id="timer-display">00:00</div>
+            <div class="timer-controls">
+                <input type="number" id="timer-input" value="5" min="1" max="99">
+                <span style="line-height: 34px;">分</span>
+                <button onclick="startTimer()">開始</button>
+                <button onclick="stopTimer()" style="background-color: #dc3545;">停止</button>
+                <button onclick="resetTimer()" style="background-color: #6c757d;">リセット</button>
+            </div>
+        </div>
+
+        <!-- ショートカットセクション -->
+        <div class="card shortcuts-card">
+            <h3 style="margin-top: 0;">ショートカット</h3>
+            <div class="category-buttons" id="category-buttons">
+                <!-- JSで生成 -->
+            </div>
+            <div class="links-grid" id="links-grid">
+                <!-- JSで生成 -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        window.onload = function() {
-            loadCommonHeader();
-            updateClock();
-            setInterval(updateClock, 1000);
+        // --- 1. 時計（日本時間表示） ---
+        function updateClock() {
+            const now = new Date();
+            const optionsDate = { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' };
+            const optionsTime = { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            
+            document.getElementById('date-display').textContent = new Intl.DateTimeFormat('ja-JP', optionsDate).format(now);
+            document.getElementById('time-display').textContent = new Intl.DateTimeFormat('ja-JP', optionsTime).format(now);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- 2. 天気情報 ---
+        const weatherLocations = {
+            zushi: { lat: 35.295, lon: 139.580, name: "逗子エリア" },
+            machida: { lat: 35.596, lon: 139.331, name: "町田市相原町" }
         };
-    </script>
-    <!--しーくれっと-->
-    <script>
-        // 秘密の順番を設定
-        const secretSequence = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'];
-        let currentSequenceIndex = 0;
-    
-        document.addEventListener('keydown', (event) => {
-          // 入力されたキーが次の順番に合っているか確認
-          if (event.key === secretSequence[currentSequenceIndex]) {
-            currentSequenceIndex++; // 次の順番に進む
-    
-            // 全てのキーが入力された場合
-            if (currentSequenceIndex === secretSequence.length) {
-              alert('秘密基地へようこそ！'); // メッセージを表示
-              window.location.href = 'https://muraonsan.github.io/main.html'; // 遷移先URLを指定
+
+        async function fetchWeather(lat, lon, locationName) {
+            document.getElementById('location-status').textContent = `${locationName}の情報を取得中...`;
+            // ローディング状態のリセット
+            document.getElementById('w-temp').textContent = `--°C`;
+            document.getElementById('w-feels').textContent = `--°C`;
+            document.getElementById('w-rain').textContent = `-- mm`;
+            document.getElementById('w-press').textContent = `-- hPa`;
+
+            try {
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation,surface_pressure&timezone=Asia%2FTokyo`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                document.getElementById('w-temp').textContent = `${data.current.temperature_2m}°C`;
+                document.getElementById('w-feels').textContent = `${data.current.apparent_temperature}°C`;
+                document.getElementById('w-rain').textContent = `${data.current.precipitation} mm`;
+                document.getElementById('w-press').textContent = `${data.current.surface_pressure} hPa`;
+                document.getElementById('location-status').textContent = `${locationName}の情報を表示中`;
+            } catch (error) {
+                document.getElementById('location-status').textContent = "気象情報の取得に失敗しました。";
             }
-          } else {
-            // 順番が違った場合、最初に戻す
-            currentSequenceIndex = 0;
-          }
-        });
-      </script>
+        }
+
+        function setWeatherLocation(type) {
+            // ボタンのスタイル更新
+            const buttons = document.querySelectorAll('#weather-location-buttons .category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if(type === 'current') buttons[0].classList.add('active');
+            else if(type === 'zushi') buttons[1].classList.add('active');
+            else if(type === 'machida') buttons[2].classList.add('active');
+
+            // データ取得
+            if (type === 'current') {
+                document.getElementById('location-status').textContent = "位置情報を取得中...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        fetchWeather(position.coords.latitude, position.coords.longitude, "現在地");
+                    },
+                    (error) => {
+                        document.getElementById('location-status').textContent = "位置情報がオフのため、逗子エリアを表示します。";
+                        fetchWeather(weatherLocations.zushi.lat, weatherLocations.zushi.lon, "逗子エリア");
+                    }
+                );
+            } else {
+                const loc = weatherLocations[type];
+                fetchWeather(loc.lat, loc.lon, loc.name);
+            }
+        }
+
+        // --- 3. 簡易タイマー ---
+        let timerInterval;
+        let timeLeft = 0;
+
+        function updateTimerDisplay() {
+            const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            const s = (timeLeft % 60).toString().padStart(2, '0');
+            document.getElementById('timer-display').textContent = `${m}:${s}`;
+        }
+
+        function startTimer() {
+            if (timerInterval) return;
+            if (timeLeft === 0) {
+                const mins = parseInt(document.getElementById('timer-input').value) || 0;
+                timeLeft = mins * 60;
+            }
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    stopTimer();
+                    alert("タイマーが終了しました！");
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            timeLeft = 0;
+            const mins = parseInt(document.getElementById('timer-input').value) || 0;
+            document.getElementById('timer-display').textContent = `${mins.toString().padStart(2, '0')}:00`;
+        }
+
+        // --- 4. ショートカット（カテゴリ別） ---
+        const linksData = [
+            { title: "法政大学ポータル", url: "https://hoppii2025.hosei.ac.jp/portal/", category: "大学・活動" },
+            { title: "多摩実 実行委員ページ", url: "#", category: "大学・活動" },
+            { title: "JR東日本 採用情報", url: "#", category: "就活" },
+            { title: "東京メトロ 採用情報", url: "#", category: "就活" },
+            { title: "東武鉄道 採用情報", url: "#", category: "就活" },
+            { title: "西武鉄道 採用情報", url: "#", category: "就活" },
+            { title: "東急電鉄 採用情報", url: "#", category: "就活" },
+            { title: "小田急 採用情報", url: "#", category: "就活" },
+            { title: "JESS 採用情報", url: "#", category: "就活" },
+            { title: "就活会議 マイページ", url: "#", category: "就活" },
+            { title: "ﾋﾞｽﾞﾘｰﾁCAMPUS マイページ", url: "#", category: "就活" },
+            { title: "ｷｬﾘﾀｽ マイページ", url: "#", category: "就活" },
+            { title: "マイナビ マイページ", url: "#", category: "就活" },
+            { title: "ITパスポート過去問", url: "#", category: "学習" },
+            { title: "Cloud", url: "cloud.html", category: "WEB" },
+            { title: "doainfo", url: "doainfo.html", category: "WEB" },
+            { title: "期限管理", url: "kigen.html", category: "WEB" },
+            { title: "マニュアル", url: "manyuaru.html", category: "WEB" },
+            { title: "もぐら叩き", url: "mogura.html", category: "WEB" },
+            { title: "文字拡大", url: "mojikakudai.html", category: "WEB" },
+            { title: "My Links", url: "mylinks.html", category: "WEB" },
+            { title: "QRコードメーカ-", url: "qr.html", category: "WEB" },
+            { title: "促進", url: "sokusin.html", category: "WEB" },
+        ];
+
+        const categories = ["すべて", ...new Set(linksData.map(link => link.category))];
+        let currentCategory = "WEB";
+
+        function renderLinks() {
+            const grid = document.getElementById('links-grid');
+            grid.innerHTML = '';
+            linksData.forEach(link => {
+                if (currentCategory === "すべて" || link.category === currentCategory) {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.className = 'link-item';
+                    a.textContent = link.title;
+                    grid.appendChild(a);
+                }
+            });
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('category-buttons');
+            container.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `category-btn ${cat === currentCategory ? 'active' : ''}`;
+                btn.textContent = cat;
+                btn.onclick = () => {
+                    currentCategory = cat;
+                    renderCategories();
+                    renderLinks();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // 初期化
+        document.getElementById('timer-display').textContent = `${document.getElementById('timer-input').value.padStart(2, '0')}:00`;
+        renderCategories();
+        renderLinks();
+        setWeatherLocation('current'); // 天気の初期化
+    </script>
 </body>
 </html>
